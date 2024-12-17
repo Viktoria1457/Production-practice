@@ -1,0 +1,180 @@
+/* Общие стили для body */
+body {
+  background: #90bada; /* Цвет фона */
+  height: 100vh;  /* Высота 100% viewport height */
+  width: 100vw;  /* Ширина 100% viewport width */
+  font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; /* Семейство шрифтов */
+  display: flex; /* Flexbox для центрирования содержимого */
+  align-items: center; /* Выравнивание элементов по центру вертикали */
+  justify-content: center; /* Выравнивание элементов по центру горизонтали */
+  margin: 0; /* Обнуление внешних отступов */
+  padding: 0; /* Обнуление внутренних отступов */
+}
+
+/* Стили для счетчика (не используется в предоставленном HTML) */
+.counter {
+  font-size: 0.8rem; /* Размер шрифта */
+  padding-left: 10px; /* Внутренний отступ слева */
+  padding-right: 10px; /* Внутренний отступ справа */
+}
+
+/* Стили для контейнера списка покупок */
+#shopping-list {
+  background: #fff; /* Белый фон */
+  padding: 2rem; /* Внутренний отступ */
+  margin: 1rem; /* Внешний отступ */
+  border-radius: 3px; /* Закругление углов */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08); /* Тень */
+  width: 95%; /* Ширина 95% от родительского элемента */
+  max-width: 900px;  /* Максимальная ширина */
+}
+/* Стили для заголовка h1 */
+h1 {
+  color: #0084ff; /* Цвет текста */
+}
+/* Стили для ul списка */
+ul {
+  list-style: none; /* Убираем маркеры списка */
+  padding: 0; /* Обнуляем внутренние отступы */
+}
+/* Стили для ссылок a */
+a {
+  color: #6cb2eb; /* Цвет текста */
+  font-size: 1.25rem; /* Размер шрифта */
+  transition: all 0.1s ease-in; /* Плавный переход при наведении */
+  margin-top: 0.5rem; /* Верхний отступ */
+  display: block; /* Блочное отображение */
+}
+/* Стили для ссылок при наведении */
+a:hover {
+  color: #3490dc; /* Цвет текста при наведении */
+}
+/* Стили для li и p элементов */
+li,
+p {
+  display: flex; /* Flexbox для выравнивания */
+  align-items: center; /* Выравнивание по вертикали */
+  line-height: 1.75;  /* Высота строки */
+  letter-spacing: 0.5px; /* Расстояние между буквами */
+  color: #3d4852; /* Цвет текста */
+  font-size: 1.25rem; /* Размер шрифта */
+  cursor: pointer; /* Курсор при наведении */
+  transition: all 0.1s ease-in;  /* Плавный переход */
+}
+/* Стили для li при наведении */
+li:hover {
+  color: #9d4fe6;  /* Цвет текста при наведении */
+}
+/* Стили для input внутри li */
+li input {
+  margin: 0 0.5rem 0; /* Отступы вокруг input */
+}
+
+/* Стили для input и select внутри #shopping-list */
+#shopping-list > input,
+#shopping-list > select {
+  width: 100%; /* Ширина */
+  border-radius: 3px; /* Закругление углов */
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); /* Тень */
+  border: 1px solid #f1f5f8;  /* Граница */
+  color: #606f7b;  /* Цвет текста */
+  padding: 0.5rem 0.75rem; /* Внутренние отступы */
+  box-sizing: border-box; /* Модель размера */
+  font-size: 1rem;  /* Размер шрифта */
+  letter-spacing: 0.5px;  /* Расстояние между буквами */
+  margin: 0.5rem 0;  /* Отступы */
+}
+
+/* Стили для формы добавления и заголовка */
+.add-item-form,
+.header {
+  display: flex;  /* Flexbox для выравнивания */
+  align-items: center; /* Выравнивание по вертикали */
+  justify-content: space-between;  /* Выравнивание с распределением свободного места */
+}
+
+/* Стили для input в форме добавления */
+.add-item-form input {
+  width: 70%; /* Ширина */
+  border-radius: 3px; /* Закругление углов */
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);  /* Тень */
+  border: 1px solid #f1f5f8;  /* Граница */
+  color: #606f7b;  /* Цвет текста */
+  padding: 0.5rem 0.75rem;  /* Внутренние отступы */
+  box-sizing: border-box; /* Модель размера */
+  font-size: 1rem; /* Размер шрифта */
+  letter-spacing: 0.5px;  /* Расстояние между буквами */
+  margin: 0.5rem 0;  /* Отступы */
+}
+
+/* Стили для кнопок */
+.btn {
+  border: none; /* Убираем границу */
+  border-radius: 3px; /* Закругление углов */
+  margin: auto 0;  /* Отступы */
+  padding: 0.5rem 0.75rem;  /* Внутренние отступы */
+  flex-shrink: 0; /* Не сжимать */
+  cursor: pointer; /* Курсор при наведении */
+  font-size: 0.9rem;  /* Размер шрифта */
+  letter-spacing: 0.5px;  /* Расстояние между буквами */
+  transition: all 0.1s ease-in; /* Плавный переход */
+}
+
+/* Стили для отключенных кнопок */
+.btn[disabled] {
+  background: #8795a1;  /* Цвет фона */
+}
+
+/* Стили для отключенных кнопок при наведении */
+.btn[disabled]:hover {
+  background: #606f7b; /* Цвет фона при наведении */
+}
+
+/* Стили для основной кнопки */
+.btn-primary {
+  background: #6cb2eb;  /* Цвет фона */
+  color: #fff; /* Цвет текста */
+}
+
+/* Стили для основной кнопки при наведении */
+.btn-primary:hover {
+  background: #3490dc;  /* Цвет фона при наведении */
+}
+
+/* Стили для кнопки отмены */
+.btn-cancel {
+  background: #951fa0;  /* Цвет фона */
+  color: #fff;  /* Цвет текста */
+}
+
+ /* Стили для кнопки отмены при наведении */
+.btn-cancel:hover {
+  background: #ad2fe3; /* Цвет фона при наведении */
+  color: #fff; /* Цвет текста */
+}
+
+/* Стили для зачеркнутого текста */
+.strikeout {
+  text-decoration: line-through;  /* Зачеркивание */
+  color: #b8c2cc;  /* Цвет текста */
+}
+
+ /* Стили для зачеркнутого текста при наведении */
+.strikeout:hover {
+  color: #8795a1; /* Цвет текста при наведении */
+}
+
+ /* Стили для текста с высоким приоритетом*/
+.priority {
+  color: #ec4817e6;
+}
+.priority {
+  color: #3a3a3a;
+}
+/* Стили для чекбокса */
+input[type="checkbox"]{
+  display: inline !important;
+  box-shadow: none;
+  width: auto;
+}
