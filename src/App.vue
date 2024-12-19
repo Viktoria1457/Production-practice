@@ -2,16 +2,16 @@
   <v-app>
     <v-container>
       <v-row justify="center">
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="7">
           <v-card>
             <v-card-title>
               <v-row justify="space-between" align="center">
                 <v-col>
-                  <h1>{{ header || 'Welcome' }}</h1>
+                  <h1 class="header-title">{{ header || 'Добро пожаловать' }}</h1>
                 </v-col>
                 <v-col cols="auto">
-                  <v-btn v-if="editing" @click="doEdit(false)" color="error">Cancel</v-btn>
-                  <v-btn v-else @click="doEdit(true)" color="primary">Add Item</v-btn>
+                  <v-btn v-if="editing" @click="doEdit(false)" color="error">Отменить</v-btn>
+                  <v-btn v-else @click="doEdit(true)" color="primary">Добавить элемент</v-btn>
                 </v-col>
               </v-row>
             </v-card-title>
@@ -19,13 +19,13 @@
             <v-card-text>
               <v-form v-if="editing" @submit.prevent>
                 <v-text-field
-                  label="Add an Item"
+                  label="Добавить элемент"
                   v-model="newItem"
                   @keyup.enter="saveItem"
                   outlined
                 ></v-text-field>
 
-                <v-checkbox v-model="newItemHighPriority" label="High Priority"></v-checkbox>
+                <v-checkbox v-model="newItemHighPriority" label="Высокий приоритет"></v-checkbox>
 
                 <v-btn
                   @click="saveItem"
@@ -33,16 +33,16 @@
                   color="primary"
                   class="mt-2"
                 >
-                  Save Item
+                  Сохранить элемент
                 </v-btn>
               </v-form>
 
-              <v-alert v-if="showPurchasedAlert" type="success" border="left" class="mt-4">
-                Nice job! You've bought all your items!
+              <v-alert v-if="showPurchasedAlert" type="success" border="left" class="mt-4" color="green">
+                Отличная работа! Вы купили все свои элементы!
               </v-alert>
 
-              <v-alert v-if="showEmptyListAlert" type="info" border="left" class="mt-4">
-                Your shopping list is empty.
+              <v-alert v-if="showEmptyListAlert" type="info" border="left" class="mt-4" color="blue">
+                Ваш список покупок пуст.
               </v-alert>
 
               <v-list>
@@ -76,14 +76,14 @@ export default {
   name: 'App',
   data() {
     return {
-      header: 'Shopping List App',
+      header: 'Приложение для списка покупок',
       editing: false,
       newItem: '',
       newItemHighPriority: false,
       items: [
-        { id: 1, label: '10 party hats', purchased: true, highPriority: false },
-        { id: 2, label: '2 board games', purchased: true, highPriority: false },
-        { id: 3, label: '20 cups', purchased: false, highPriority: true },
+        { id: 1, label: '10 праздничных шляп', purchased: true, highPriority: false },
+        { id: 2, label: '2 настольные игры', purchased: true, highPriority: false },
+        { id: 3, label: '20 стаканчиков', purchased: false, highPriority: true },
       ],
       showPurchasedAlert: false,
       showEmptyListAlert: false,
@@ -139,20 +139,27 @@ export default {
 </script>
 
 <style>
+.header-title {
+  font-size: 1.2em; /* Увеличение размера шрифта для заголовка */
+  margin: 0; /* Удаление отступов вокруг заголовка */
+  color: #1976d2; /* Задайте любой цвет заголовка */
+  text-align: center; /* Центрирование заголовка */
+  flex: 2; /* Для выравнивания заголовка */
+}
 .strikeout {
   text-decoration: line-through;
 }
 .priority {
   font-weight: bold;
-  color: #ff9800;
+  color: #ff9800; /* Цвет для элементов с высоким приоритетом */
 }
 .list-item {
   transition: background-color 0.3s ease;
 }
 .list-item:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(173, 216, 230, 0.5); /* Цвет при наведении */
 }
 .list-item:active {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(135, 206, 250, 0.5); /* Цвет при нажатии */
 }
 </style>
