@@ -1,43 +1,43 @@
 <template>
   <div class="shopping-list">
-    <h1>{{ header || 'Welcome' }}</h1>
+    <h1>{{ header || 'Добро пожаловать' }}</h1>
 
     <div class="button-container">
-      <button class="action-button" v-if="editing" @click="doEdit(false)">Cancel</button>
-      <button class="action-button" v-else @click="doEdit(true)">Add Item</button>
+      <button class="action-button" v-if="editing" @click="doEdit(false)">Отменить</button>
+      <button class="action-button" v-else @click="doEdit(true)">Добавить элемент</button>
     </div>
 
     <form v-if="editing" @submit.prevent="saveItem">
       <input
         type="text"
-        placeholder="Add an Item"
+        placeholder="Добавить элемент"
         v-model="newItem"
         @keyup.enter="saveItem"
       />
       <label>
         <input type="checkbox" v-model="newItemHighPriority" />
-        High Priority
+        Высокий приоритет
       </label>
-      <button class="action-button" :disabled="newItem.length === 0">Save Item</button>
+      <button class="action-button" :disabled="newItem.length === 0">Сохранить элемент</button>
     </form>
 
-    <label for="filter">Filter:</label>
-    <select id="filter" v-model="currentFilter">
-      <option value="all">All</option>
-      <option value="purchased">Purchased</option>
-      <option value="notPurchased">Not Purchased</option>
-    </select>
+    <div class="filter-container">
+      <label style="margin-right:70px">Фильтр:</label>
+      <button class="filter-button" :class="{ active: currentFilter === 'all' }" @click="currentFilter = 'all'">Все</button>
+      <button class="filter-button" :class="{ active: currentFilter === 'purchased' }" @click="currentFilter = 'purchased'">Куплено</button>
+      <button class="filter-button" :class="{ active: currentFilter === 'notPurchased' }" @click="currentFilter = 'notPurchased'">Не куплено</button>
+    </div>
 
     <div v-if="showPurchasedAlert" class="alert success">
-      Nice job! You've bought all your items!
+      Отличная работа! Вы купили все свои элементы!
     </div>
 
     <div v-if="showEmptyListAlert" class="alert info">
-      Your shopping list is empty.
+      Ваш список покупок пуст.
     </div>
 
     <div v-if="showDuplicateAlert" class="alert duplicate">
-      Item already exists in the list!
+      Элемент уже существует в списке!
     </div>
 
     <ul>
@@ -48,7 +48,7 @@
         :class="{ priority: item.highPriority }"
       >
         <span :class="{ strikeout: item.purchased }" class="item-label">{{ item.label }}</span>
-        <button class="delete-button" @click.stop="removeItem(item)">Delete</button>
+        <button class="delete-button" @click.stop="removeItem(item)">Удалить</button>
       </li>
     </ul>
   </div>
@@ -59,15 +59,15 @@ export default {
   name: 'ShoppingList',
   data() {
     return {
-      header: 'Shopping List App',
+      header: 'Приложение для списка покупок',
       editing: false,
       newItem: '',
       newItemHighPriority: false,
       currentFilter: 'all',
       items: [
-        { id: 1, label: '10 party hats', purchased: true, highPriority: false },
-        { id: 2, label: '2 board games', purchased: true, highPriority: false },
-        { id: 3, label: '20 cups', purchased: false, highPriority: true },
+        { id: 1, label: '10 праздничных шляп', purchased: true, highPriority: false },
+        { id: 2, label: '2 настольные игры', purchased: true, highPriority: false },
+        { id: 3, label: '20 стаканчиков', purchased: false, highPriority: true },
       ],
       showPurchasedAlert: false,
       showEmptyListAlert: false,
@@ -146,7 +146,7 @@ export default {
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #fff8f0; /* Светлый фон для всего контейнера */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -189,24 +189,31 @@ h1 {
   color: #ff9800;
 }
 
-.label {
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-select {
-  margin: 20px 0;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
-  cursor: pointer;
-}
-
-.button-container {
+.filter-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  gap:20px;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.filter-button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Цвет для кнопок фильтра */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+  background-color: #0056b3; /* Темный цвет при наведении */
+}
+
+.filter-button.active {
+  background-color: #0056b3; /* Цвет активной кнопки */
 }
 
 ul {
